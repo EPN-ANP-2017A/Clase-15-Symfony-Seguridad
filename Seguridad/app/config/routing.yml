@@ -4,3 +4,34 @@ app:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_security_login:
+    path: /ingresar
+    defaults: { _controller: FOSUserBundle:Security:login, _methods: GET|POST }
+
+fos_user_security_logout:
+    path: /salir
+    defaults: { _controller: FOSUserBundle:Security:logout, _methods: GET|POST }
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /perfil
+
+fos_user_profile_edit:
+    path: /perfil/editar
+    defaults: { _controller: FOSUserBundle:Profile:edit, _methods: GET|POST }
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /registro
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetear
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /perfil

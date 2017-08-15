@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Post</h1>
+
+    <table>
+        <tbody>
+        <tr>
+            <th>Texto</th>
+            <td>{{ post.texto }}</td>
+        </tr>
+        <tr>
+            <th>Usuario</th>
+            <td>{{ post.usuario.username }}</td>
+        </tr>
+        <tr>
+            <th>Fecha</th>
+            <td>{% if post.fecha %}{{ post.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <h1>Nuevo comentario</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <h1>Lista de comentarios</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Texto</th>
+            <th>Usuario</th>
+            <th>Fecha</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for comentario in post.comentarios %}
+            <tr>
+                <td>{{ comentario.texto }}</td>
+                <td>{{ comentario.usuario.username }}</td>
+                <td>{% if comentario.fecha %}{{ comentario.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('post_index') }}">Regresar a la lista</a>
+        </li>
+    </ul>
+{% endblock %}
